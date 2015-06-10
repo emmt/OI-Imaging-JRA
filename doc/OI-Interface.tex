@@ -332,10 +332,11 @@ specified. \oops{This requires setting the \KEYWORD{CRPIXn},
 
 It is proposed that the output format be as similar as possible as the input
 format.  The output file must provide the reconstructed image but also some
-information for analyzing the result.  In particular, as each imaging
-algorithm may implement its own method for estimate the complex visibilities
-given the image of the object, it is necessary that the model of every fitted
-data point be computed by the algorithm itself rather than by another tool.
+information for analyzing the result \oops{and the input image(?)}.  In 
+particular, as each imaging algorithm may implement its own method for estimate 
+the complex visibilities given the image of the object, it is necessary that the 
+model of every fitted data point be computed by the algorithm itself rather than 
+by another tool.
 
 \subsection{Input parameters}
 
@@ -377,6 +378,14 @@ images are distinguished by their names (given by their
 \KEYWORD{EXTNAME = 'OUTPUT\VARIABLE{n}'}
 \end{quote}
 with \VARIABLE{n} the iteration number.}
+
+\oops{Jonathan: for the name it depends, if we allow multiple output images from the
+last iterations or not, I would consider that there is only one final/temporary
+image that we overwrite at each iteration. So we consider that a written image
+is a valid iteration and so we can restart from there.
+Maybe we should clear the notion of restarting an iteration: do we want to resume
+ in case of a failure (we only need the last valid result or de we want to be able to 
+ change some parameters and restart from any iteration ? }
 
 In order to continue the iterations of a previous reconstruction run,
 the image reconstruction algorithm may be started with the final image
