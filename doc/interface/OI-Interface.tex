@@ -437,6 +437,19 @@ model assumed by the reconstruction algorithm.  Another advantage of
 this convention is that the same format can be exploited to store the
 values given by model fitting software.
 
+\oops{Implementing the additional columns for model data might not be
+  so easy. When reading in the data, the imaging code must keep track
+  of where in the OIFITS file each datum came from (HDU and wavelength
+  channel) so that it can write the corresponding model datum in the
+  correct place later. Also low-level access to the FITS file is
+  required.
+
+  An alternative would be to write additional data using the standard
+  OIFITS columns, with a distinct TARGET\_ID. The extra table rows for
+  model data could be appended to the existing tables or written to
+  new tables. This approach would allow a standard OIFITS API to be
+  used.}
+
 \renewcommand{\ROW}[2]{\texttt{#1} & \texttt{D(\textsl{NWAVE})} & #2 \\}
 \renewcommand{\ROWTITLE}[1]{\multicolumn{3}{c}{\textbf{#1}}\\}
 
